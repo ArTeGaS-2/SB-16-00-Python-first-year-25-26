@@ -2,13 +2,13 @@ import turtle as t
 
 def draw_square(size, color="black"):
     t.color(color)
-    for _ in range(4):      # ▶
+    for i in range(4):      # ▶
         t.forward(size)     # ▶
         t.left(90)          # ▶
 
 def draw_triangle(size, color="black"):
     t.color(color)
-    for _ in range(3):      # ▶
+    for i in range(3):      # ▶
         t.forward(size)     # ▶
         t.left(120)         # ▶
 
