@@ -1,8 +1,9 @@
-import turtle as t
+import turtle as t # Імпорт бібліотеки/модуля "Черепашка"
 
 t.title("Мозаїка") # Заголовок
 t.speed(0) # Швидкість
-t.bgcolor("white")
+t.bgcolor("white") 
+t.tracer(0)
 
 def draw_cell(x, y, size, fill):
     """ Малює зафарбований квадрат з верхнього-лівого кута"""
@@ -13,7 +14,7 @@ def draw_cell(x, y, size, fill):
         t.forward(size)
         t.right(90)
     t.end_fill()
-    
+
 # Параметри сітки
 n = 8
 cell = 40
