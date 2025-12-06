@@ -15,7 +15,7 @@ def main():
     # Шрифт і текст
     font = pygame.font.SysFont("consolas", 32)
 
-    current_pharse = "small car-race, go."
+    current_pharse = "кочка"
     remaining_text = current_pharse
 
     # Середня довжина одного символа в пікселях
