@@ -26,6 +26,34 @@ class Game:
         pygame.quit()
         sys.exit()
 
+    def _draw_track(self):
+        # фон траси
+        track_rect = pygame.Rect(
+            0,
+            settings.TRACK_TOP,
+            settings.BASE_WIDTH,
+            settings.TRACK_HEIGHT)
+        pygame.draw.rect(self.screen, settings.TRACK_COLOR, track_rect)
+
+        # лінії між полосами
+        lane_height = (settings.TRACK_BOTTOM - settings.TRACK_TOP
+                       ) // settings.LANE_COUNT
+        for lane in range(1, settings.LANE_COUNT):
+            y = settings.TRACK_TOP
+            pygame.draw.line(
+                self.screen,
+                settings.LANE_LINE_COLOR,
+                (settings.TRACK_START_X, y),
+                (settings.TRACK_FINISH_X, y),
+                2)
+        # стартова лінія
+        pygame.draw.line(
+            self.screen,
+            settings.LINE_COLOR,
+            (settings.TRACK_START_X, settings.TRACK_TOP),
+            (settings.TRACK_START_X, settings.TRACK_BOTTOM),
+            4)
+
     def _handle_events(self):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
