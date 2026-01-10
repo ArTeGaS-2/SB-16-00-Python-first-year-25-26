@@ -53,6 +53,14 @@ class Game:
             (settings.TRACK_START_X, settings.TRACK_TOP),
             (settings.TRACK_START_X, settings.TRACK_BOTTOM),
             4)
+        # Фінішна лінія
+        pygame.draw.line(
+            self.screen,
+            settings.LINE_COLOR,
+            (settings.TRACK_FINISH_X, settings.TRACK_TOP),
+            (settings.TRACK_FINISH_X, settings.TRACK_BOTTOM),
+            4)
+        
 
     def _handle_events(self):
         for event in pygame.event.get():
@@ -64,4 +72,5 @@ class Game:
 
     def _draw(self):
         self.screen.fill(settings.BG_COLOR)
+        self._draw_track()
         pygame.display.flip()
