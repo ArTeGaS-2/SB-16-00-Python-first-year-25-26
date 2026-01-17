@@ -15,6 +15,9 @@ class Game:
         self.clock = pygame.time.Clock()
         self.running = True
 
+        self.cars = []
+        self._create_cars()
+
     def run(self):
         while self.running:
             dt_ms = self.clock.tick(settings.FPS)
@@ -69,8 +72,27 @@ class Game:
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
                     self.running = False
+                elif event.key == pygame.K_SPACE:
+                    player_car = self.cars[0]
+                    player_car.move_one_symbol()
 
     def _draw(self):
         self.screen.fill(settings.BG_COLOR)
         self._draw_track()
+
+        for car in self.cars:
+            car.draw(self.screen)
+
         pygame.display.flip()
+
+    def _create_cars(self):
+
+        from car import Car
+
+        player_color = (230, 60, 60)
+        player_car = Car(lane_index=0, color=player_color, is_player=True)
+        self.cars.append(player_car)
+
+    def _update(self, dt):
+        for car in self.cars:
+            car.update(dt)
