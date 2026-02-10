@@ -24,3 +24,10 @@ CAR_HEIGHT = 40
 SYMBOL_STEP_PX = 20
 TRACK_LENGHT_PX = TRACK_FINISH_X - TRACK_START_X
 SYMBOLS_TO_FINISH = TRACK_LENGHT_PX // SYMBOL_STEP_PX
+
+CAR_COLORS = [
+    (230, 60, 60),    # гравець
+    (60, 180, 230),   # бот 1
+    (60, 230, 130),   # бот 2
+    (230, 230, 60),   # бот 3
+]

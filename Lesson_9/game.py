@@ -86,12 +86,15 @@ class Game:
         pygame.display.flip()
 
     def _create_cars(self):
-
         from car import Car
 
-        player_color = (230, 60, 60)
-        player_car = Car(lane_index=0, color=player_color, is_player=True)
-        self.cars.append(player_car)
+        self.cars = []
+
+        for lane_index in range(settings.LANE_COUNT):
+            is_player = (lane_index == 0)  # верхня полоса — гравець
+            color = settings.CAR_COLORS[lane_index]
+            car = Car(lane_index=lane_index, color=color, is_player=is_player)
+            self.cars.append(car)
 
     def _update(self, dt):
         for car in self.cars:
