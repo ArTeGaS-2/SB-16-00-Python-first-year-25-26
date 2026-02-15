@@ -25,6 +25,7 @@ class Game:
 
             self._handle_events()
             self._draw()
+            self._update(dt)
         
         pygame.quit()
         sys.exit()
