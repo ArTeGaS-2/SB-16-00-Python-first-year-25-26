@@ -100,3 +100,16 @@ class Game:
     def _update(self, dt):
         for car in self.cars:
             car.update(dt)
+
+    def _load_phrases(self):
+        lines = []
+
+        try:
+            with open(settings.PHRASES_FILE,"r", encoding="utf-8") as f:
+                lines = [line.strip() for line in f.readlines()]
+        except (OSError, UnicodeDecodeError):
+            try:
+                with open(settings.PHRASES_FILE,"r", encoding="cp1251") as f:
+                    lines = [line.strip() for line in f.readlines()]
+            except (OSError, UnicodeDecodeError):
+                lines = []
