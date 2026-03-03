@@ -2,6 +2,7 @@
 import sys
 import pygame
 import settings
+import random
 
 class Game:
     def __init__(self):
@@ -17,6 +18,8 @@ class Game:
 
         self.cars = []
         self._create_cars()
+        self.phrases = self._load_phrases()
+        self._reset_typing_text()
 
     def run(self):
         while self.running:
@@ -113,3 +116,51 @@ class Game:
                     lines = [line.strip() for line in f.readlines()]
             except (OSError, UnicodeDecodeError):
                 lines = []
+        
+        cleaned = []
+        for line in lines:
+            line = (
+                line.replace("\ufeff", "")
+                .replace("\u200b", "")
+                .replace("\u200c", "")
+                .replace("\u200d", "")
+                .replace("\u2060", "")
+            )
+            if line:
+                cleaned.append(line)
+        return cleaned
+    
+    def _generate_target_text(self):
+        phrase = random.choice(self.phrases)
+
+        target = phrase
+        while len(target) < settings.TYPING_TEXT_LENGTH:
+            target += " " + phrase
+
+        return target[: settings.TYPING_TEXT_LENGTH]
+    
+    def _reset_typing_text(self):
+        self.target_text = self._generate_target_text()
+        self.typing_index = 0
+        self.mistakes = 0
+    
+    def _handle_typing(self, event):
+        player_car = self.cars[0]
+
+        if player_car.finished:
+            return
+        
+        if self.typing_index >= len(self.target_text):
+            return
+        
+        typed_char = event.unicode
+        if typed_char == " ":
+            return
+        
+        expected_char = self.target_text[self.typing_index]
+
+        if typed_char.lower() == expected_char.lower():
+            self.typing_index += 1
+            player_car.move_one_symbol()
+        else:
+            self.mistakes += 1
