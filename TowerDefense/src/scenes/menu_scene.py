@@ -61,7 +61,7 @@ class MenuScene:
 
         title_surface = self.title_font.render("Tower Defence",
             True, (255, 255, 255))
-        title_rect = title_surface.get_rect(centre=(WINDOW_WIDTH // 2, 170))
+        title_rect = title_surface.get_rect(center=(WINDOW_WIDTH // 2, 170))
         surface.blit(title_surface, title_rect)
 
         self.start_button.draw(surface)

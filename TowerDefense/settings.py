@@ -3,9 +3,13 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent
 ASSETS_DIR = BASE_DIR / "assets"
 UI_ASSETS_DIR = ASSETS_DIR / "ui"
+TILES_ASSETS_DIR = ASSETS_DIR / "tiles"
+DATA_DIR = BASE_DIR / "data"
 
 MENU_BACKGROUND_PATH = UI_ASSETS_DIR / "menu_background.png"
 BUTTON_IMAGE_PATH = UI_ASSETS_DIR / "button.png"
+
+SIDEBAR_PANEL_PATH = UI_ASSETS_DIR / "sidebar_panel.png"
 
 WINDOW_WIDTH = 1280
 WINDOW_HEIGHT = 720
