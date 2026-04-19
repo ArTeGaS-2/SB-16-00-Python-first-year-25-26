@@ -62,3 +62,37 @@ class TileMap:
         
         raise ValueError(f"Tile with value {target_value} was not found.")
 
+    def find_next_path_tile(self, current, previous):
+        for neighbor in self.get_neighbors(current):
+            if neighbor == previous:
+                continue
+
+            tile_value = self.get_tile_value(neighbor)
+            if tile_value in (1,3):
+                return neighbor
+            
+        raise ValueError("Path is broken. Could not find the next tile")
+    
+    def get_neighbors(self, tile_position):
+        col, row = tile_position
+        neighbors = []
+
+        directions = ((1, 0), (0, 1), (-1, 0), (0, -1))
+        for delta_col, delta_row in directions:
+            next_col = col + delta_col
+            next_row = row + delta_row
+
+            if 0 <= next_col < self.cols and 0 <= next_row < self.rows:
+                neighbors.append((next_col, next_row))
+
+        return neighbors
+    
+    def get_tile_value(self, tile_position):
+        col, row = tile_position
+        return self.grid[row][col]
+    
+    def get_tile_center(self, tile_position):
+        col, row = tile_position
+        center_x = col * self.tile_size + self.tile_size // 2
+        center_y = row * self.tile_size + self.tile_size // 2
+        return center_x, center_y
