@@ -10,7 +10,7 @@ from settings import(
 
 from src.map.tile_map import TileMap
 
-class GameScene:
+class GameScene: 
     def __init__(self, game):
         self.game = game
         self.tile_map = TileMap(MAP_DATA_PATH)
@@ -30,4 +30,23 @@ class GameScene:
 
     def draw(self, surface):
         self.tile_map.draw(surface)
-        # surface.
+        surface.blit(self.sidebar_panel, (SIDEBAR_X, 0))
+        self.draw_sidebar(surface)
+
+    def draw_sidebar(self, surface):
+        title_surface = self.title_font.render("Game Panel", True, WHITE)
+        surface.blit(title_surface, (SIDEBAR_X + 40, 55))
+
+        self.draw_sidebar_block(surface, "Build", "Basic Tower", 45, 220)
+        self.draw_sidebar_block(surface, "Resources", "Coins: 120", 45, 380)
+        self.draw_sidebar_block(surface, "Status", "Lives: 10", 45, 550)
+    
+        wave_text = self.text_font.render("Wave: waiting", True, WHITE)
+        surface.blit(wave_text, (SIDEBAR_X + 55, 640))
+
+        path_text = self.text_font.render(
+            f"Path points: {len(self.tile_map.path_points)}",
+            True,
+            WHITE)
+        
+        surface.blit(path_text, (SIDEBAR_X + 55, 675))

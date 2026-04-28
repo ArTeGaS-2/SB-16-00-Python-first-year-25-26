@@ -57,7 +57,7 @@ class TileMap:
     def find_tile(self, target_value):
         for row_index, row in enumerate(self.grid):
             for col_index, tile_value in enumerate(row):
-                if tile_value == target_value:
+                if tile_value == target_value: 
                     return col_index, row_index
         
         raise ValueError(f"Tile with value {target_value} was not found.")
