@@ -12,6 +12,9 @@ class Game:
         self.is_running = True
         self.current_scene = MenuScene(self)
 
+    def set_scene(self, scene):
+        self.current_scene = scene
+
     def run(self):
         while self.is_running:
             delta_time = self.clock.tick(FPS) / 1000

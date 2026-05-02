@@ -50,3 +50,10 @@ class GameScene:
             WHITE)
         
         surface.blit(path_text, (SIDEBAR_X + 55, 675))
+
+    def draw_sidebar_block(self, surface, title, value, x_offset, y):
+        title_surface = self.section_font.render(title, True, WHITE)
+        value_surface = self.text_font.render(value, True, WHITE)
+
+        surface.blit(title_surface, (SIDEBAR_X + x_offset, y))
+        surface.blit(value_surface, (SIDEBAR_X + x_offset, y + 40))

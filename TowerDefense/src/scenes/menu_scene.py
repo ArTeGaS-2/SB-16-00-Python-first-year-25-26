@@ -8,6 +8,7 @@ from settings import (
     BUTTON_GAP)
 
 from src.ui.button import Button
+from src.scenes.game_scene import GameScene
 
 class MenuScene:
     def __init__(self, game):
@@ -48,7 +49,7 @@ class MenuScene:
             mouse_pos = event.pos
 
             if self.start_button.is_clicked(mouse_pos):
-                print("Start clicked")
+                self.game.set_scene(GameScene(self.game))
 
             if self.exit_button.is_clicked(mouse_pos):
                 self.game.is_running = False
