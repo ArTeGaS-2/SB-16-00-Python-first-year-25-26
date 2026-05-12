@@ -1,6 +1,8 @@
 import pygame
 
 from settings import(
+    BASIC_ENEMY_PATH,
+    BASIC_ENEMY_SPEED,
     MAP_DATA_PATH,
     SIDEBAR_PANEL_PATH,
     SIDEBAR_WIDTH,
@@ -9,11 +11,18 @@ from settings import(
     WINDOW_HEIGHT)
 
 from src.map.tile_map import TileMap
+from src.entities.enemy import Enemy
 
 class GameScene: 
     def __init__(self, game):
         self.game = game
         self.tile_map = TileMap(MAP_DATA_PATH)
+
+        self.enemy = Enemy(
+            BASIC_ENEMY_PATH,
+            self.tile_map.path_points,
+            BASIC_ENEMY_SPEED)
+
         self.sidebar_panel = pygame.image.load(str(SIDEBAR_PANEL_PATH)).convert()
         self.sidebar_panel = pygame.transform.scale(
             self.sidebar_panel, (SIDEBAR_WIDTH, WINDOW_HEIGHT))
