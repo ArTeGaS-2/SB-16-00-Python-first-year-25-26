@@ -19,7 +19,7 @@ class Enemy:
         distance_to_target = direction.length()
 
         if distance_to_target == 0:
-            self.advance_to_next_target()
+            self.advanced_to_next_target()
             return
         
         movement_distance = self.speed * delta_time
