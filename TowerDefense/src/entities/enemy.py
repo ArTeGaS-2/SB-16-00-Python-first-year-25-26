@@ -25,7 +25,7 @@ class Enemy:
         movement_distance = self.speed * delta_time
         if movement_distance >= distance_to_target:
             self.position = target
-            self.advance_to_next_target()
+            self.advanced_to_next_target()
             return
         
         direction.normalize_ip()

@@ -35,10 +35,12 @@ class GameScene:
             self.game.is_running = False
     
     def update(self, delta_time):
-        pass
+        self.enemy.update(delta_time)
 
     def draw(self, surface):
         self.tile_map.draw(surface)
+        self.enemy.draw(surface)
+
         surface.blit(self.sidebar_panel, (SIDEBAR_X, 0))
         self.draw_sidebar(surface)
 
@@ -59,6 +61,10 @@ class GameScene:
             WHITE)
         
         surface.blit(path_text, (SIDEBAR_X + 55, 675))
+
+        enemy_text = self.text_font.render(
+            self.enemy.get_status_text(), True, WHITE)
+        surface.blit(enemy_text, (SIDEBAR_X + 55, 705))
 
     def draw_sidebar_block(self, surface, title, value, x_offset, y):
         title_surface = self.section_font.render(title, True, WHITE)
