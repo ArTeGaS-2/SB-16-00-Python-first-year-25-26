@@ -46,3 +46,19 @@ ENEMIES_ASSETS_DIR = ASSETS_DIR / "enemies"
 BASIC_ENEMY_PATH = ENEMIES_ASSETS_DIR / "basic_enemy.png"
 
 BASIC_ENEMY_SPEED = 120 
+
+# Вежа і куля
+
+TOWER_ASSETS_DIR = ASSETS_DIR / "tower"
+PROJECTILE_ASSETS_DIR = ASSETS_DIR / "projectiles"
+
+BASIC_TOWER_PATH = TOWER_ASSETS_DIR / "basic_tower.png"
+BASIC_BULLET_PATH = PROJECTILE_ASSETS_DIR / "basic_bullet.png"
+
+BASIC_ENEMY_HP = 3 # кількість ударів, які ворог може витримати
+
+BASIC_TOWER_RANGE = 260 # радіус атаки вежі
+BASIC_TOWER_FIRE_INTERVAL = 0.5 # час між пострілами в секундах (0.5 означає, що вежа стріляє двічі на секунду)
+BASIC_TOWER_DAMAGE = 1 # кількість HP, які знімаються з ворога при попаданні кулі
+BASIC_BULLET_SPEED = 340 # швидкість руху кулі в пікселях за секунду (чим більше, тим швидше куля летить до ворога)
+BASIC_TOWER_CAN_ROTATE = True # якщо True, то вежа буде повертатися в напрямку ворога при стрільбі;
