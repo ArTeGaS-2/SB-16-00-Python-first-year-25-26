@@ -1,8 +1,15 @@
 import pygame
 
 from settings import(
+    BASIC_BULLET_PATH,
     BASIC_ENEMY_PATH,
+    BASIC_ENEMY_HP,
     BASIC_ENEMY_SPEED,
+    BASIC_TOWER_CAN_ROTATE,
+    BASIC_TOWER_FIRE_INTERVAL,
+    BASIC_TOWER_PATH,
+    BASIC_TOWER_RANGE,
+    BASIC_BULLET_SPEED,
     MAP_DATA_PATH,
     SIDEBAR_PANEL_PATH,
     SIDEBAR_WIDTH,
@@ -12,16 +19,15 @@ from settings import(
 
 from src.map.tile_map import TileMap
 from src.entities.enemy import Enemy
+from src.entities.tower import Tower
 
 class GameScene: 
     def __init__(self, game):
         self.game = game
         self.tile_map = TileMap(MAP_DATA_PATH)
 
-        self.enemy = Enemy(
-            BASIC_ENEMY_PATH,
-            self.tile_map.path_points,
-            BASIC_ENEMY_SPEED)
+        tower_tile = self.tile_map.find_tile(4)
+        
 
         self.sidebar_panel = pygame.image.load(str(SIDEBAR_PANEL_PATH)).convert()
         self.sidebar_panel = pygame.transform.scale(
