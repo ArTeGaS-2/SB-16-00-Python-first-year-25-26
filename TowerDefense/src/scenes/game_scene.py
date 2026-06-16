@@ -26,8 +26,9 @@ class GameScene:
         self.game = game
         self.tile_map = TileMap(MAP_DATA_PATH)
 
+
+
         tower_tile = self.tile_map.find_tile(4)
-        
 
         self.sidebar_panel = pygame.image.load(str(SIDEBAR_PANEL_PATH)).convert()
         self.sidebar_panel = pygame.transform.scale(
